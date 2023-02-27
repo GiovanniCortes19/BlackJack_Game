@@ -16,7 +16,7 @@ let message = "";
 function getCards() {
   let drawCard = Math.floor(Math.random() * 13) + 1;
   if (drawCard === 1) return 11;
-  else if (drawCard === 11 || drawCard === 12 || drawCard === 13) return 10;
+  else if (drawCard > 10) return 10;
   else return drawCard;
 }
 

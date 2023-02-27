@@ -5,6 +5,7 @@ let resultMessage = document.getElementById("message-el");
 
 let firstCard = getCards();
 let secondCard = getCards();
+let cardsList = [firstCard, secondCard];
 
 let sum = firstCard + secondCard;
 
@@ -13,11 +14,22 @@ let message = "";
 // Functions:
 
 function getCards() {
-  return Math.floor(Math.random() * (12 - 2) + 2);
+  let drawCard = Math.floor(Math.random() * 13) + 1;
+  if (drawCard === 1) return 11;
+  else if (drawCard === 11 || drawCard === 12 || drawCard === 13) return 10;
+  else return drawCard;
 }
 
 function startGame() {
-  cards.textContent = `Cards: ${firstCard} - ${secondCard}`;
+  renderGame();
+}
+
+function renderGame() {
+  cards.textContent = `Cards: `;
+  cardsList.forEach((cardDrawn) => {
+    cards.textContent += `${cardDrawn} `;
+  });
+
   sumOfCards.textContent = `Sum: ${sum}`;
 
   if (sum < 21) {
@@ -33,8 +45,7 @@ function startGame() {
 
 function newCard() {
   let card = getCards();
+  cardsList.push(card);
   sum += card;
-  startGame();
-  cards.textContent += ` - ${card}`;
-  sumOfCards.textContent = `Sum: ${sum}`;
+  renderGame();
 }

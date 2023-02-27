@@ -38,16 +38,16 @@ p {
   font-weight: 700;
 }
 
-button#startgame-button {
+button {
   cursor: pointer;
   background-color: goldenrod;
-  color: darkgreen;
+  color: rgb(5, 107, 5);
   width: 12em;
-  height: 2.5em;
+  height: 2.3em;
   font-size: x-large;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
   border: 3px solid goldenrod;
   border-radius: 5px;
 }

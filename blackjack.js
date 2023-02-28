@@ -11,7 +11,7 @@ let hasBlackjack = false;
 let costOfGame = 25;
 
 let player = {
-  name: "Gio",
+  name: "Player",
   chips: 200,
 };
 

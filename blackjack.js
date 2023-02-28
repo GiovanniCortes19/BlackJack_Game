@@ -3,13 +3,11 @@ let cards = document.getElementById("cards-el");
 let sumOfCards = document.getElementById("sum-el");
 let resultMessage = document.getElementById("message-el");
 
-let firstCard = getCards();
-let secondCard = getCards();
-let cardsList = [firstCard, secondCard];
-
-let sum = firstCard + secondCard;
-
+let cardsList = [];
+let sum = 0;
 let message = "";
+let isAlive = false;
+let hasBlackjack = false;
 
 // Functions:
 
@@ -21,6 +19,12 @@ function getCards() {
 }
 
 function startGame() {
+  isAlive = true;
+  hasBlackjack = false;
+  let firstCard = getCards();
+  let secondCard = getCards();
+  cardsList = [firstCard, secondCard];
+  sum = firstCard + secondCard;
   renderGame();
 }
 
@@ -36,16 +40,20 @@ function renderGame() {
     message = "Do you want to draw a new card?";
   } else if (sum === 21) {
     message = `Wohoo! You've got Blackjack! 💵`;
+    hasBlackjack = true;
   } else {
     message = `You're out of the game! 😢`;
+    isAlive = false;
   }
 
   resultMessage.textContent = message;
 }
 
 function newCard() {
-  let card = getCards();
-  cardsList.push(card);
-  sum += card;
-  renderGame();
+  if (isAlive && !hasBlackjack) {
+    let card = getCards();
+    cardsList.push(card);
+    sum += card;
+    renderGame();
+  }
 }

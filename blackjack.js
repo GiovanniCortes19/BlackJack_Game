@@ -9,6 +9,15 @@ let message = "";
 let isAlive = false;
 let hasBlackjack = false;
 
+let player = {
+  name: "Gio",
+  chips: 200,
+};
+
+let playerEl = document.getElementById("player-el");
+
+playerEl.textContent = `${player.name}: $${player.chips}`;
+
 // Functions:
 
 function getCards() {

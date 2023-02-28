@@ -8,6 +8,7 @@ let sum = 0;
 let message = "";
 let isAlive = false;
 let hasBlackjack = false;
+let costOfGame = 25;
 
 let player = {
   name: "Gio",
@@ -28,6 +29,9 @@ function getCards() {
 }
 
 function startGame() {
+  player.chips -= costOfGame;
+  playerEl.textContent = `${player.name}: $${player.chips}`;
+
   isAlive = true;
   hasBlackjack = false;
   let firstCard = getCards();
@@ -50,6 +54,8 @@ function renderGame() {
   } else if (sum === 21) {
     message = `Wohoo! You've got Blackjack! 💵`;
     hasBlackjack = true;
+    player.chips += costOfGame * 2;
+    playerEl.textContent = `${player.name}: $${player.chips}`;
   } else {
     message = `You're out of the game! 😢`;
     isAlive = false;
